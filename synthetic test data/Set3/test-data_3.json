@@ -1,0 +1,98 @@
+// test-data_3.json
+{
+  "testMetadata": {
+    "testName": "NPP Accounting Service Corporate Payroll Test",
+    "testDescription": "Verify NPP Accounting Service processes a corporate batch debit",
+    "fromBic": "RSBKAUFSXXX",
+    "toBic": "RSBKAUFSXXX"
+  },
+  "messaging": {
+    "inputQueue": {
+      "destination": "NPP.INACC.01.AU.IN.01",
+      "isCompressed": false
+    },
+    "reply": {
+      "destination": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "destinationType": "topic",
+      "isCompressed": false,
+      "responseTemplatePath": "npp-accounting-corporate-payroll.json",
+      "correlationIdDisabled": true
+    },
+    "protocol": "Solace"
+  },
+  "testTemplateData": {
+    "templatePath": "npp-accounting-corporate-payroll.json",
+    "templateParameters": {
+      "static": {
+        "actionCode": "DebitClient_CreditClearing",
+        "fromBic": "RSBKAUFSXXX",
+        "toBic": "RSBKAUFSXXX",
+        "fromCountry": "AU",
+        "toCountry": "AU",
+        "fromBranch": "062372",
+        "toBranch": "062372",
+        "bizSvc": "npp.corp.batch.01",
+        "currency": "AUD",
+        "amount": "750000.00",
+        "beneficiaryCountry": "AU",
+        "beneficiaryBic": "RSBKAUFSXXX",
+        "beneficiaryBranch": "062372",
+        "beneficiaryName": "Internal Payroll Clearing",
+        "beneficiaryAccountId": "PAYROLL-CLR-SUSP",
+        "debitCountry": "AU",
+        "debitBic": "RSBKAUFSXXX",
+        "debitBranch": "062372",
+        "debitAccountId": "ACME-CORP-DDA",
+        "debitAccountGroup": "CORP",
+        "debitAcctSys": "CORP",
+        "debitAcctUse": "ClientDDA",
+        "debitCostCentre": "CORP_BANKING",
+        "debitAggregate": "N",
+        "creditCountry": "AU",
+        "creditBic": "RSBKAUFSXXX",
+        "creditBranch": "062372",
+        "creditAccountId": "PAYROLL_CLEARING_GL",
+        "creditAccountGroup": "INTERNAL",
+        "creditAcctSys": "GL",
+        "creditAcctUse": "Clearing",
+        "creditCostCentre": "CORP_BANKING",
+        "creditAggregate": "N"
+      }
+    }
+  },
+  "databaseVerification": [
+    {
+      "query": "SELECT * FROM ${dbSchema}PSP_ACCT_ENTRY WHERE PU_ID = '${puId}' AND LEG_ID = '1' AND ACTION_CODE = 'DebitClient_CreditClearing'...",
+      "verification": [
+        { "field": "PU_ID", "type": "equals", "value": "${puId}" },
+        { "field": "ACTION_CODE", "type": "equals", "value": "DebitClient_CreditClearing" },
+        { "field": "DEBIT_ACCOUNT_ID", "type": "equals", "value": "ACME-CORP-DDA" },
+        { "field": "DEBIT_AMOUNT", "type": "equals", "value": "750000.00" },
+        { "field": "DEBIT_ACCT_SYS", "type": "equals", "value": "CORP" },
+        { "field": "CREDIT_ACCOUNT_ID", "type": "equals", "value": "PAYROLL_CLEARING_GL" },
+        { "field": "CREDIT_AMOUNT", "type": "equals", "value": "750000.00" },
+        { "field": "CREDIT_ACCT_SYS", "type": "equals", "value": "GL" }
+      ]
+    }
+  ],
+  "mongoVerification": [
+    {
+      "collection": "accountingAuditlog",
+      "description": "Verify MongoDB audit trail for Corporate Payroll",
+      "filter": {
+        "puId": "${puId}",
+        "remark": "Corporate Payroll batch posted to GL"
+      },
+      "verification": [
+        { "field": "reqId", "type": "equals", "value": "${txId}" },
+        { "field": "remark", "type": "equals", "value": "Corporate Payroll batch posted to GL" },
+        { "field": "source", "type": "equals", "value": "AccountingService" },
+        { "field": "eventcode", "type": "equals", "value": "ISP902" }
+      ],
+      "expectedCount": {
+        "type": "equals",
+        "value": 1
+      }
+    }
+  ]
+}

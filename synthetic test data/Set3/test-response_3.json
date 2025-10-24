@@ -1,0 +1,267 @@
+// test-response_3.json
+{
+  "AccountingEntryMap": {
+    "AccountingEntry": {
+      "ObjId": "@Ignore@",
+      "LegNum": "1",
+      "SeqNum": "@Ignore@",
+      "BulkCount": "0",
+      "PodId": "${puId}",
+      "Source": "NPP_CORP",
+      "ProcDate": "${procDate}",
+      "Country": "AU",
+      "DebitCountry": "AU",
+      "DebitCurrency": "AUD",
+      "DebitAccountId": "ACME-CORP-DDA",
+      "DebitAccountGroup": "CORP",
+      "DebitAccountBSB": "062372",
+      "DebitCostCentre": "CORP_BANKING",
+      "DebitAccountSys": "CORP",
+      "DebitAmount": "750000.00",
+      "DebitNarrative": "${puId} - Payroll Batch A12",
+      "DebitASTM": "PSGL",
+      "DebitAggregateInd": "N",
+      "BucketID": null,
+      "CreditCountry": "AU",
+      "CreditCurrency": "AUD",
+      "CreditAccountId": "PAYROLL-CLR-SUSP",
+      "CreditAccountGroup": "INTERNAL",
+      "CreditAccountBSB": "062372",
+      "CreditCostCentre": "CORP_BANKING",
+      "CreditAccountSys": "GL",
+      "CreditAmount": "750000.00",
+      "CreditNarrative": "Payroll Batch A12",
+      "CreditASTM": "PSGL",
+      "CreditAggregateInd": "N",
+      "OtherPartyBucketID": null,
+      "DestinationASTM": "GL",
+      "MiscAttribute1": "PAYROLL",
+      "MiscAttribute2": "BATCH-A12",
+      "MiscAttribute3": null,
+      "MiscAttribute4": null
+    }
+  },
+  "Header": {
+    "ComponentName": "PSP_NPP",
+    "UUID": "${puId}",
+    "WorkFlow": "NPP003",
+    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "ServiceAction": {
+      "ActionCode": "DebitClient_CreditClearing",
+      "ActionDesc": "Debit Corporate Client DDA, Credit Internal Clearing GL"
+    },
+    "EventInfo": {
+      "EventCode": "P.NPP.STS.CP_PAE.102",
+      "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
+      "EventID": "@Ignore@",
+      "EventType": "PE",
+      "EventProducer": "NPPInwardAccountingService",
+      "EventTS": "@Ignore@",
+      "EventTopics": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "SystemId": null,
+      "Events": {
+        "Event": [
+          {
+            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
+          },
+          {
+            "EventCode": "P.NPP.STS.CP_PAE.102",
+            "EventID": "@Ignore@"
+          }
+        ]
+      },
+      "EventVersion": null
+    },
+    "ReqMap": {
+      "Map": [
+        {
+          "MapKey": "SN_INTR_BNK_STTLMT_AMT",
+          "MapValue": "750000.00"
+        },
+        {
+          "MapKey": "DBTR_LEGAL_NM",
+          "MapValue": "ACME Corp"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_LEGAL_NAME",
+          "MapValue": "Internal Payroll Clearing"
+        },
+        {
+          "MapKey": "PU_ID",
+          "MapValue": "${puId}"
+        },
+        {
+          "MapKey": "MSG_ID",
+          "MapValue": "RSBKAUFSXXX20250821001430005009876"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_ID",
+          "MapValue": "PAYROLL-CLR-SUSP"
+        },
+        {
+          "MapKey": "DBTR_NM",
+          "MapValue": "ACME Corp"
+        },
+        {
+          "MapKey": "INSTG_BIC",
+          "MapValue": "RSBKAUFSXXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_NAME",
+          "MapValue": "Internal Payroll Clearing"
+        },
+        {
+          "MapKey": "TX_ID",
+          "MapValue": "${txId}"
+        },
+        {
+          "MapKey": "TRACE_ID",
+          "MapValue": "PSP043740222"
+        }
+      ]
+    },
+    "MUID": "RSBKAUFSXXX20250821001430005009876",
+    "Channel": "NPP",
+    "Direction": "INWARD",
+    "RcvdTS": null,
+    "DomainName": null,
+    "DomainType": null
+  },
+  "Body": {
+    "PmtAddRq": {
+      "{": null,
+      "RqUID": "${txId}",
+      "ClientInfo": null,
+      "MsgHdr": {
+        "ClientDt": "@Ignore@",
+        "ClientName": "NPP_CORP"
+      },
+      "PayHdr": {
+        "PODSID": "${puId}",
+        "ThirdPartyPayID": "PAYROLL_BATCH_A12",
+        "NbrofItems": 1,
+        "PaymentTRN": "${txId}",
+        "ProcDate": "${procDate}"
+      },
+      "FromFIData": {
+        "Country": "AU",
+        "BIC": "RSBKAUFSXXX",
+        "Branch": "062372"
+      },
+      "FromCust": {
+        "Name": "ACME Corp",
+        "CustClass": "CORP",
+        "Reference": "NOTPROVIDED",
+        "Country": "AU"
+      },
+      "FromAcct": {
+        "AcctId": "ACME-CORP-DDA",
+        "AcctSys": "CORP",
+        "AcctGrp": "CORP",
+        "Branch": "062372",
+        "CostCentre": "CORP_BANKING",
+        "Narrative": "${puId} - Payroll Batch A12",
+        "CurCode": "AUD",
+        "Amount": "750000.00",
+        "AcctUse": "ClientDDA",
+        "Reference": "NOTPROVIDED"
+      },
+      "Lien": null,
+      "ToFIData": {
+        "Country": "AU",
+        "BIC": "RSBKAUFSXXX",
+        "Branch": "062372"
+      },
+      "Clearing": {
+        "ClearPref": "INTERNAL",
+        "PurposeText": "Corporate Payroll Batch"
+      },
+      "ToBene": {
+        "Name": "Internal Payroll Clearing",
+        "Country": "AU",
+        "Message": "Payroll Batch A12 Aug 21"
+      },
+      "ToAcct": {
+        "AcctId": "PAYROLL-CLR-SUSP",
+        "AcctSys": "GL",
+        "AcctGrp": "INTERNAL",
+        "Branch": "062372",
+        "CostCentre": "CORP_BANKING",
+        "Name": "Internal Payroll Clearing",
+        "CurCode": "AUD",
+        "Amount": "750000.00",
+        "Narrative": "Payroll Batch A12"
+      },
+      "FX": null,
+      "Fees": null,
+      "ISOInfo": null,
+      "id": null
+    }
+  ],
+  "PmtAddRs": [
+    {
+      "RqUID": null,
+      "ClientInfo": null,
+      "DestinationName": null,
+      "ClientName": "NPP_CORP",
+      "MsgHdr": {
+        "ClientName": "NPP_CORP",
+        "Country": "AU"
+      },
+      "OutcomeQueue": null,
+      "PayHdr": {
+        "ClearPref": "INTERNAL"
+      },
+      "Status": {
+        "StatusCode": "0",
+        "StatusDesc": "SUCCESS"
+      },
+      "FX": null,
+      "Message": null,
+      "Returned": {
+        "PODSID": "${puId}",
+        "ClearMethod": "INTERNAL",
+        "Message": [
+          {
+            "Status": "Final",
+            "Detail": "Accounting"
+          }
+        ]
+      },
+      "id": null
+    }
+  ],
+  "Procctxt": null,
+  "BatchAddRq": null,
+  "BatchAddRs": null,
+  "LeanReference": null,
+  "Instruction": {
+    "MsgDef": {
+      "MsgType": "npp.corp.batch.01",
+      "Scheme": "corp.payroll.01"
+    },
+    "ClrSys": "INTERNAL"
+  },
+  "Detail": null,
+  "Trailer": {
+    "ServiceStatus": {
+      "Status": "SUCCESS",
+      "StatusCode": "0",
+      "StatusDesc": "AccountingPosted",
+      "Repairable": null
+    }
+  },
+  "ResMap": {
+    "Map": [
+      {
+        "MapKey": "INTERNAL_REF",
+        "MapValue": "CORP-BATCH-A12"
+      },
+      {
+        "MapKey": "EVENT_CODE",
+        "MapValue": "CORP_POST_SUCCESS"
+      }
+    ]
+  }
+}

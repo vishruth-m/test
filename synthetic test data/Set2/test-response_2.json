@@ -1,0 +1,267 @@
+// test-response_2.json
+{
+  "AccountingEntryMap": {
+    "AccountingEntry": {
+      "ObjId": "@Ignore@",
+      "LegNum": "1",
+      "SeqNum": "@Ignore@",
+      "BulkCount": "0",
+      "PodId": "${puId}",
+      "Source": "NPP_INTERNAL",
+      "ProcDate": "${procDate}",
+      "Country": "AU",
+      "DebitCountry": "AU",
+      "DebitCurrency": "AUD",
+      "DebitAccountId": "NPP-SUSP-01",
+      "DebitAccountGroup": "INTERNAL",
+      "DebitAccountBSB": "062372",
+      "DebitCostCentre": "FEE_MGMT",
+      "DebitAccountSys": "SAP",
+      "DebitAmount": "25.00",
+      "DebitNarrative": "${puId} - Fee Posting",
+      "DebitASTM": "PSGL",
+      "DebitAggregateInd": "N",
+      "BucketID": null,
+      "CreditCountry": "AU",
+      "CreditCurrency": "AUD",
+      "CreditAccountId": "FEE-INC-4500",
+      "CreditAccountGroup": "INTERNAL",
+      "CreditAccountBSB": "062372",
+      "CreditCostCentre": "FEE_MGMT",
+      "CreditAccountSys": "GL",
+      "CreditAmount": "25.00",
+      "CreditNarrative": "NPP Fee Recognition",
+      "CreditASTM": "PSGL",
+      "CreditAggregateInd": "N",
+      "OtherPartyBucketID": null,
+      "DestinationASTM": "GL",
+      "MiscAttribute1": "FEE",
+      "MiscAttribute2": "INCOME",
+      "MiscAttribute3": null,
+      "MiscAttribute4": null
+    }
+  },
+  "Header": {
+    "ComponentName": "PSP_NPP",
+    "UUID": "${puId}",
+    "WorkFlow": "NPP002",
+    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "ServiceAction": {
+      "ActionCode": "DebitSuspense_CreditFeeGL",
+      "ActionDesc": "Post fee from suspense to income GL"
+    },
+    "EventInfo": {
+      "EventCode": "P.NPP.STS.CP_PAE.102",
+      "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
+      "EventID": "@Ignore@",
+      "EventType": "PE",
+      "EventProducer": "NPPInwardAccountingService",
+      "EventTS": "@Ignore@",
+      "EventTopics": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "SystemId": null,
+      "Events": {
+        "Event": [
+          {
+            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
+          },
+          {
+            "EventCode": "P.NPP.STS.CP_PAE.102",
+            "EventID": "@Ignore@"
+          }
+        ]
+      },
+      "EventVersion": null
+    },
+    "ReqMap": {
+      "Map": [
+        {
+          "MapKey": "SN_INTR_BNK_STTLMT_AMT",
+          "MapValue": "25.00"
+        },
+        {
+          "MapKey": "DBTR_LEGAL_NM",
+          "MapValue": "NPP Suspense"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_LEGAL_NAME",
+          "MapValue": "Fee Income GL"
+        },
+        {
+          "MapKey": "PU_ID",
+          "MapValue": "${puId}"
+        },
+        {
+          "MapKey": "MSG_ID",
+          "MapValue": "RSBKAUFSXXX20250820000900000001234"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_ID",
+          "MapValue": "FEE-INC-4500"
+        },
+        {
+          "MapKey": "DBTR_NM",
+          "MapValue": "NPP Suspense"
+        },
+        {
+          "MapKey": "INSTG_BIC",
+          "MapValue": "RSBKAUFSXXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_NAME",
+          "MapValue": "Fee Income GL"
+        },
+        {
+          "MapKey": "TX_ID",
+          "MapValue": "${txId}"
+        },
+        {
+          "MapKey": "TRACE_ID",
+          "MapValue": "PSP043740111"
+        }
+      ]
+    },
+    "MUID": "RSBKAUFSXXX20250820000900000001234",
+    "Channel": "NPP",
+    "Direction": "INWARD",
+    "RcvdTS": null,
+    "DomainName": null,
+    "DomainType": null
+  },
+  "Body": {
+    "PmtAddRq": {
+      "{": null,
+      "RqUID": "${txId}",
+      "ClientInfo": null,
+      "MsgHdr": {
+        "ClientDt": "@Ignore@",
+        "ClientName": "NPP_INTERNAL"
+      },
+      "PayHdr": {
+        "PODSID": "${puId}",
+        "ThirdPartyPayID": "Fee_Posting_01",
+        "NbrofItems": 1,
+        "PaymentTRN": "${txId}",
+        "ProcDate": "${procDate}"
+      },
+      "FromFIData": {
+        "Country": "AU",
+        "BIC": "RSBKAUFSXXX",
+        "Branch": "062372"
+      },
+      "FromCust": {
+        "Name": "NPP Suspense",
+        "CustClass": "BANK",
+        "Reference": "NOTPROVIDED",
+        "Country": "AU"
+      },
+      "FromAcct": {
+        "AcctId": "NPP-SUSP-01",
+        "AcctSys": "SAP",
+        "AcctGrp": "INTERNAL",
+        "Branch": "062372",
+        "CostCentre": "FEE_MGMT",
+        "Narrative": "${puId} - Fee Posting",
+        "CurCode": "AUD",
+        "Amount": "25.00",
+        "AcctUse": "Suspense",
+        "Reference": "NOTPROVIDED"
+      },
+      "Lien": null,
+      "ToFIData": {
+        "Country": "AU",
+        "BIC": "RSBKAUFSXXX",
+        "Branch": "062372"
+      },
+      "Clearing": {
+        "ClearPref": "INTERNAL",
+        "PurposeText": "Internal Fee Recognition"
+      },
+      "ToBene": {
+        "Name": "Fee Income GL",
+        "Country": "AU",
+        "Message": "NPP Fee Recognition Aug 20"
+      },
+      "ToAcct": {
+        "AcctId": "FEE-INC-4500",
+        "AcctSys": "GL",
+        "AcctGrp": "INTERNAL",
+        "Branch": "062372",
+        "CostCentre": "FEE_MGMT",
+        "Name": "Fee Income GL",
+        "CurCode": "AUD",
+        "Amount": "25.00",
+        "Narrative": "NPP Fee Recognition"
+      },
+      "FX": null,
+      "Fees": null,
+      "ISOInfo": null,
+      "id": null
+    }
+  ],
+  "PmtAddRs": [
+    {
+      "RqUID": null,
+      "ClientInfo": null,
+      "DestinationName": null,
+      "ClientName": "NPP_INTERNAL",
+      "MsgHdr": {
+        "ClientName": "NPP_INTERNAL",
+        "Country": "AU"
+      },
+      "OutcomeQueue": null,
+      "PayHdr": {
+        "ClearPref": "INTERNAL"
+      },
+      "Status": {
+        "StatusCode": "0",
+        "StatusDesc": "SUCCESS"
+      },
+      "FX": null,
+      "Message": null,
+      "Returned": {
+        "PODSID": "${puId}",
+        "ClearMethod": "INTERNAL",
+        "Message": [
+          {
+            "Status": "Final",
+            "Detail": "Accounting"
+          }
+        ]
+      },
+      "id": null
+    }
+  ],
+  "Procctxt": null,
+  "BatchAddRq": null,
+  "BatchAddRs": null,
+  "LeanReference": null,
+  "Instruction": {
+    "MsgDef": {
+      "MsgType": "npp.internal.01",
+      "Scheme": "internal.fee.01"
+    },
+    "ClrSys": "INTERNAL"
+  },
+  "Detail": null,
+  "Trailer": {
+    "ServiceStatus": {
+      "Status": "SUCCESS",
+      "StatusCode": "0",
+      "StatusDesc": "AccountingSucceeded",
+      "Repairable": null
+    }
+  },
+  "ResMap": {
+    "Map": [
+      {
+        "MapKey": "INTERNAL_REF",
+        "MapValue": "FEE-POST-12345"
+      },
+      {
+        "MapKey": "EVENT_CODE",
+        "MapValue": "FEE_POST_SUCCESS"
+      }
+    ]
+  }
+}
