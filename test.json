@@ -1,0 +1,67 @@
+{
+  "useCaseName": "User Account Management",
+  "description": "The end-to-end process for a new user to register, verify their email, and successfully log in to the application.",
+  "userStories": [
+    {
+      "storyId": "US-001",
+      "title": "New User Registration",
+      "steps": [
+        "Navigate to the registration page.",
+        "Enter a valid, unique email address.",
+        "Enter a strong password (minimum 8 characters, one uppercase, one number).",
+        "Confirm the password.",
+        "Click the 'Register' button."
+      ],
+      "expectedResult": "User is redirected to the 'Verify Email' page and a verification email is sent.",
+      "testDataParameters": [
+        {"name": "email", "type": "string", "constraints": ["unique", "valid_format"]},
+        {"name": "password", "type": "string", "constraints": ["min_length:8", "has_uppercase", "has_number"]},
+        {"name": "confirmPassword", "type": "string", "constraints": ["matches:password"]}
+      ]
+    },
+    {
+      "storyId": "US-002",
+      "title": "Email Verification",
+      "steps": [
+        "Open the verification email.",
+        "Click the verification link."
+      ],
+      "expectedResult": "User is redirected to the 'Account Verified' page and their account status is updated to 'verified'.",
+      "prerequisite": "US-001 must be successfully completed."
+    },
+    {
+      "storyId": "US-003",
+      "title": "User Login",
+      "steps": [
+        "Navigate to the login page.",
+        "Enter the registered and verified email address.",
+        "Enter the correct password.",
+        "Click the 'Login' button."
+      ],
+      "expectedResult": "User is successfully logged into the application and redirected to the main dashboard.",
+      "prerequisite": "US-002 must be successfully completed.",
+      "testDataParameters": [
+        {"name": "email", "type": "string", "constraints": ["registered", "verified"]},
+        {"name": "password", "type": "string", "constraints": ["correct"]}
+      ]
+    }
+  ],
+  "negativeTestScenarios": [
+    {
+      "scenarioName": "Invalid Registration - Duplicate Email",
+      "storyId": "US-001",
+      "testData": [
+        {"email": "existing_user@example.com", "password": "Password123", "confirmPassword": "Password123"}
+      ],
+      "expectedError": "An account with this email already exists."
+    },
+    {
+      "scenarioName": "Invalid Login - Wrong Password",
+      "storyId": "US-003",
+      "testData": [
+        {"email": "valid_user@example.com", "password": "WrongPassword"}
+      ],
+      "expectedError": "Invalid email or password."
+    }
+  ]
+}
