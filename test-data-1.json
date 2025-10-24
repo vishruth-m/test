@@ -1,0 +1,102 @@
+// test-data_1.json
+{
+  "testMetadata": {
+    "testName": "NPP Accounting Service Domestic Transfer Test",
+    "testDescription": "Verify NPP Accounting Service processes a standard domestic transfer",
+    "fromBic": "RSBKAUFSXXX",
+    "toBic": "WPACAU2SXXX"
+  },
+  "messaging": {
+    "inputQueue": {
+      "destination": "NPP.INACC.01.AU.IN.01",
+      "isCompressed": false
+    },
+    "reply": {
+      "destination": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "destinationType": "topic",
+      "isCompressed": false,
+      "responseTemplatePath": "npp-accounting-domestic-transfer.json",
+      "correlationIdDisabled": true
+    },
+    "protocol": "Solace"
+  },
+  "testTemplateData": {
+    "templatePath": "npp-accounting-domestic-transfer.json",
+    "templateParameters": {
+      "static": {
+        "actionCode": "DebitClearing_CreditBeneficiary",
+        "fromBic": "RSBKAUFSXXX",
+        "toBic": "WPACAU2SXXX",
+        "fromCountry": "AU",
+        "toCountry": "AU",
+        "fromBranch": "062372",
+        "toBranch": "032001",
+        "bizSvc": "npp.stlment.01-x2p1.04",
+        "currency": "AUD",
+        "amount": "150.75",
+        "beneficiaryCountry": "AU",
+        "beneficiaryBic": "WPACAU2SXXX",
+        "beneficiaryBranch": "032001",
+        "beneficiaryName": "Global Exports Pty",
+        "beneficiaryAccountId": "032001987654",
+        "debitCountry": "AU",
+        "debitBic": "RSBKAUFSXXX",
+        "debitBranch": "062372",
+        "debitAccountId": "DOM_CLEARING_ACCT",
+        "debitAccountGroup": "",
+        "debitAcctSys": "PSP",
+        "debitAcctUse": "Clearing",
+        "debitCostCentre": "DEFAULT",
+        "debitAggregate": "Y",
+        "creditCountry": "AU",
+        "creditBic": "WPACAU2SXXX",
+        "creditBranch": "032001",
+        "creditAccountId": "DOM_BENEFICIARY_GL",
+        "creditAccountGroup": "",
+        "creditAcctSys": "PSP",
+        "creditAcctUse": "Beneficiary",
+        "creditCostCentre": "DEFAULT",
+        "creditAggregate": "Y"
+      }
+    }
+  },
+  "databaseVerification": [
+    {
+      "query": "SELECT * FROM ${dbSchema}PSP_ACCT_ENTRY WHERE PU_ID = '${puId}' AND LEG_ID = '1' AND ACTION_CODE = 'DebitClearing_CreditBeneficiary'...",
+      "verification": [
+        { "field": "PU_ID", "type": "equals", "value": "${puId}" },
+        { "field": "LEG_ID", "type": "equals", "value": "1" },
+        { "field": "ACTION_CODE", "type": "equals", "value": "DebitClearing_CreditBeneficiary" },
+        { "field": "DEBIT_ACCOUNT_ID", "type": "equals", "value": "DOM_CLEARING_ACCT" },
+        { "field": "DEBIT_AMOUNT", "type": "equals", "value": "150.75" },
+        { "field": "DEBIT_CURRENCY", "type": "equals", "value": "AUD" },
+        { "field": "CREDIT_ACCOUNT_ID", "type": "equals", "value": "DOM_BENEFICIARY_GL" },
+        { "field": "CREDIT_AMOUNT", "type": "equals", "value": "150.75" },
+        { "field": "CREDIT_CURRENCY", "type": "equals", "value": "AUD" },
+        { "field": "TX_ID", "type": "equals", "value": "${txId}" }
+      ]
+    }
+  ],
+  "mongoVerification": [
+    {
+      "collection": "accountingAuditlog",
+      "description": "Verify MongoDB audit trail for Domestic Transfer",
+      "filter": {
+        "puId": "${puId}",
+        "remark": "Domestic transfer posted to Mediation"
+      },
+      "verification": [
+        { "field": "reqId", "type": "equals", "value": "${txId}" },
+        { "field": "remark", "type": "equals", "value": "Domestic transfer posted to Mediation" },
+        { "field": "source", "type": "equals", "value": "AccountingService" },
+        { "field": "destination", "type": "equals", "value": "MediationService" },
+        { "field": "eventcode", "type": "equals", "value": "ISP900" },
+        { "field": "puId", "type": "equals", "value": "${puId}" }
+      ],
+      "expectedCount": {
+        "type": "equals",
+        "value": 1
+      }
+    }
+  ]
+}
