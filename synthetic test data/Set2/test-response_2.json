@@ -7,12 +7,12 @@
       "SeqNum": "@Ignore@",
       "BulkCount": "0",
       "PodId": "${puId}",
-      "Source": "NPP_INTERNAL",
+      "Source": "xyz_INTERNAL",
       "ProcDate": "${procDate}",
       "Country": "AU",
       "DebitCountry": "AU",
       "DebitCurrency": "AUD",
-      "DebitAccountId": "NPP-SUSP-01",
+      "DebitAccountId": "xyz-SUSP-01",
       "DebitAccountGroup": "INTERNAL",
       "DebitAccountBSB": "062372",
       "DebitCostCentre": "FEE_MGMT",
@@ -30,7 +30,7 @@
       "CreditCostCentre": "FEE_MGMT",
       "CreditAccountSys": "GL",
       "CreditAmount": "25.00",
-      "CreditNarrative": "NPP Fee Recognition",
+      "CreditNarrative": "xyz Fee Recognition",
       "CreditASTM": "PSGL",
       "CreditAggregateInd": "N",
       "OtherPartyBucketID": null,
@@ -42,31 +42,31 @@
     }
   },
   "Header": {
-    "ComponentName": "PSP_NPP",
+    "ComponentName": "PSP_xyz",
     "UUID": "${puId}",
-    "WorkFlow": "NPP002",
-    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "WorkFlow": "xyz002",
+    "ReplyToQueue": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM/RESPONSE",
     "ServiceAction": {
       "ActionCode": "DebitSuspense_CreditFeeGL",
       "ActionDesc": "Post fee from suspense to income GL"
     },
     "EventInfo": {
-      "EventCode": "P.NPP.STS.CP_PAE.102",
+      "EventCode": "P.xyz.STS.CP_PAE.102",
       "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
       "EventID": "@Ignore@",
       "EventType": "PE",
-      "EventProducer": "NPPInwardAccountingService",
+      "EventProducer": "xyzInwardAccountingService",
       "EventTS": "@Ignore@",
-      "EventTopics": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "EventTopics": "P/A/xyz/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/xyz/FAST/INWARD/NORM",
       "SystemId": null,
       "Events": {
         "Event": [
           {
-            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventCode": "P.xyz.STS.SP_ES.100",
             "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
           },
           {
-            "EventCode": "P.NPP.STS.CP_PAE.102",
+            "EventCode": "P.xyz.STS.CP_PAE.102",
             "EventID": "@Ignore@"
           }
         ]
@@ -81,7 +81,7 @@
         },
         {
           "MapKey": "DBTR_LEGAL_NM",
-          "MapValue": "NPP Suspense"
+          "MapValue": "xyz Suspense"
         },
         {
           "MapKey": "TO_ACCOUNT_LEGAL_NAME",
@@ -101,7 +101,7 @@
         },
         {
           "MapKey": "DBTR_NM",
-          "MapValue": "NPP Suspense"
+          "MapValue": "xyz Suspense"
         },
         {
           "MapKey": "INSTG_BIC",
@@ -122,7 +122,7 @@
       ]
     },
     "MUID": "RSBKAUFSXXX20250820000900000001234",
-    "Channel": "NPP",
+    "Channel": "xyz",
     "Direction": "INWARD",
     "RcvdTS": null,
     "DomainName": null,
@@ -135,7 +135,7 @@
       "ClientInfo": null,
       "MsgHdr": {
         "ClientDt": "@Ignore@",
-        "ClientName": "NPP_INTERNAL"
+        "ClientName": "xyz_INTERNAL"
       },
       "PayHdr": {
         "PODSID": "${puId}",
@@ -150,13 +150,13 @@
         "Branch": "062372"
       },
       "FromCust": {
-        "Name": "NPP Suspense",
+        "Name": "xyz Suspense",
         "CustClass": "BANK",
         "Reference": "NOTPROVIDED",
         "Country": "AU"
       },
       "FromAcct": {
-        "AcctId": "NPP-SUSP-01",
+        "AcctId": "xyz-SUSP-01",
         "AcctSys": "SAP",
         "AcctGrp": "INTERNAL",
         "Branch": "062372",
@@ -180,7 +180,7 @@
       "ToBene": {
         "Name": "Fee Income GL",
         "Country": "AU",
-        "Message": "NPP Fee Recognition Aug 20"
+        "Message": "xyz Fee Recognition Aug 20"
       },
       "ToAcct": {
         "AcctId": "FEE-INC-4500",
@@ -191,7 +191,7 @@
         "Name": "Fee Income GL",
         "CurCode": "AUD",
         "Amount": "25.00",
-        "Narrative": "NPP Fee Recognition"
+        "Narrative": "xyz Fee Recognition"
       },
       "FX": null,
       "Fees": null,
@@ -204,9 +204,9 @@
       "RqUID": null,
       "ClientInfo": null,
       "DestinationName": null,
-      "ClientName": "NPP_INTERNAL",
+      "ClientName": "xyz_INTERNAL",
       "MsgHdr": {
-        "ClientName": "NPP_INTERNAL",
+        "ClientName": "xyz_INTERNAL",
         "Country": "AU"
       },
       "OutcomeQueue": null,
@@ -238,7 +238,7 @@
   "LeanReference": null,
   "Instruction": {
     "MsgDef": {
-      "MsgType": "npp.internal.01",
+      "MsgType": "xyz.internal.01",
       "Scheme": "internal.fee.01"
     },
     "ClrSys": "INTERNAL"

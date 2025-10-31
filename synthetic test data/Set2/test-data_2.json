@@ -1,27 +1,27 @@
 // test-data_2.json
 {
   "testMetadata": {
-    "testName": "NPP Accounting Service Fee Posting Test",
-    "testDescription": "Verify NPP Accounting Service processes an internal fee posting",
+    "testName": "xyz Accounting Service Fee Posting Test",
+    "testDescription": "Verify xyz Accounting Service processes an internal fee posting",
     "fromBic": "RSBKAUFSXXX",
     "toBic": "RSBKAUFSXXX"
   },
   "messaging": {
     "inputQueue": {
-      "destination": "NPP.INACC.01.AU.IN.01",
+      "destination": "xyz.INACC.01.AU.IN.01",
       "isCompressed": false
     },
     "reply": {
-      "destination": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "destination": "P/A/xyz/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/xyz/FAST/INWARD/NORM",
       "destinationType": "topic",
       "isCompressed": false,
-      "responseTemplatePath": "npp-accounting-fee-posting.json",
+      "responseTemplatePath": "xyz-accounting-fee-posting.json",
       "correlationIdDisabled": true
     },
     "protocol": "Solace"
   },
   "testTemplateData": {
-    "templatePath": "npp-accounting-fee-posting.json",
+    "templatePath": "xyz-accounting-fee-posting.json",
     "templateParameters": {
       "static": {
         "actionCode": "DebitSuspense_CreditFeeGL",
@@ -31,7 +31,7 @@
         "toCountry": "AU",
         "fromBranch": "062372",
         "toBranch": "062372",
-        "bizSvc": "npp.internal.01",
+        "bizSvc": "xyz.internal.01",
         "currency": "AUD",
         "amount": "25.00",
         "beneficiaryCountry": "AU",
@@ -42,7 +42,7 @@
         "debitCountry": "AU",
         "debitBic": "RSBKAUFSXXX",
         "debitBranch": "062372",
-        "debitAccountId": "NPP_SUSPENSE_ACCT",
+        "debitAccountId": "xyz_SUSPENSE_ACCT",
         "debitAccountGroup": "INTERNAL",
         "debitAcctSys": "SAP",
         "debitAcctUse": "Suspense",
@@ -66,7 +66,7 @@
       "verification": [
         { "field": "PU_ID", "type": "equals", "value": "${puId}" },
         { "field": "ACTION_CODE", "type": "equals", "value": "DebitSuspense_CreditFeeGL" },
-        { "field": "DEBIT_ACCOUNT_ID", "type": "equals", "value": "NPP_SUSPENSE_ACCT" },
+        { "field": "DEBIT_ACCOUNT_ID", "type": "equals", "value": "xyz_SUSPENSE_ACCT" },
         { "field": "DEBIT_AMOUNT", "type": "equals", "value": "25.00" },
         { "field": "CREDIT_ACCOUNT_ID", "type": "equals", "value": "FEE_INCOME_GL_ACCT" },
         { "field": "CREDIT_AMOUNT", "type": "equals", "value": "25.00" },

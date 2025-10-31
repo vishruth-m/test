@@ -1,31 +1,31 @@
 // template_1.json
 {
   "Header": {
-    "ComponentName": "PSP_NPP",
+    "ComponentName": "PSP_xyz",
     "UUID": "${puId}",
-    "WorkFlow": "NPP001",
-    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "WorkFlow": "xyz001",
+    "ReplyToQueue": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM/RESPONSE",
     "ServiceAction": {
       "ActionCode": "DebitClearing_CreditBeneficiary",
       "ActionDesc": null
     },
     "EventInfo": {
-      "EventCode": "P.NPP.ADT.CP_PAE.100",
+      "EventCode": "P.xyz.ADT.CP_PAE.100",
       "EventDescription": "Request Sent for accounting:DebitClearing_CreditBeneficiary",
       "EventID": "e2d18c43-40ab-4cf6-9e0b-e0ec8eeab52",
       "EventType": "PE",
       "EventProducer": "FastInwardOrchestrator",
       "EventTS": "2025-08-19T07:10:01.123",
-      "EventTopics": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM",
+      "EventTopics": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM",
       "SystemId": null,
       "Events": {
         "Event": [
           {
-            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventCode": "P.xyz.STS.SP_ES.100",
             "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
           },
           {
-            "EventCode": "P.NPP.STS.PP_EP.300",
+            "EventCode": "P.xyz.STS.PP_EP.300",
             "EventID": "16087bd9-04d4-470d-9f99-bfc7c09cb721"
           }
         ]
@@ -101,7 +101,7 @@
       ]
     },
     "MUID": "RSBKAUFSXXX20250819000710101005123",
-    "Channel": "NPP",
+    "Channel": "xyz",
     "Direction": "INWARD",
     "RcvdTS": null,
     "DomainName": null,
@@ -114,7 +114,7 @@
         "ClientInfo": null,
         "MsgHdr": {
           "ClientDt": "${utcDateTime}",
-          "ClientName": "NPP",
+          "ClientName": "xyz",
           "PartyId": null,
           "Version": null,
           "OrigMethod": "NORM",
@@ -217,9 +217,9 @@
         "RqUID": null,
         "ClientInfo": null,
         "DestinationName": null,
-        "ClientName": "NPP",
+        "ClientName": "xyz",
         "MsgHdr": {
-          "ClientName": "NPP",
+          "ClientName": "xyz",
           "Country": "AU",
           "InstructingCountry": null
         },
@@ -256,10 +256,10 @@
     "LeanReference": null,
     "Instruction": {
       "MsgDef": {
-        "MsgType": "npp.clear.01-x2p1.04",
+        "MsgType": "xyz.clear.01-x2p1.04",
         "Scheme": "pacs.002.001.06"
       },
-      "ClrngSys": "NPP-AU"
+      "ClrngSys": "xyz-AU"
     },
     "Detail": "<BusMsg>\n<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\">\n <Fr>\n <FIId>\n <FinInstnId>\n",
     "Trailer": {

@@ -7,7 +7,7 @@
       "SeqNum": "@Ignore@",
       "BulkCount": "0",
       "PodId": "${puId}",
-      "Source": "NPP_CORP",
+      "Source": "xyz_CORP",
       "ProcDate": "${procDate}",
       "Country": "AU",
       "DebitCountry": "AU",
@@ -42,31 +42,31 @@
     }
   },
   "Header": {
-    "ComponentName": "PSP_NPP",
+    "ComponentName": "PSP_xyz",
     "UUID": "${puId}",
-    "WorkFlow": "NPP003",
-    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "WorkFlow": "xyz003",
+    "ReplyToQueue": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM/RESPONSE",
     "ServiceAction": {
       "ActionCode": "DebitClient_CreditClearing",
       "ActionDesc": "Debit Corporate Client DDA, Credit Internal Clearing GL"
     },
     "EventInfo": {
-      "EventCode": "P.NPP.STS.CP_PAE.102",
+      "EventCode": "P.xyz.STS.CP_PAE.102",
       "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
       "EventID": "@Ignore@",
       "EventType": "PE",
-      "EventProducer": "NPPInwardAccountingService",
+      "EventProducer": "xyzInwardAccountingService",
       "EventTS": "@Ignore@",
-      "EventTopics": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "EventTopics": "P/A/xyz/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/xyz/FAST/INWARD/NORM",
       "SystemId": null,
       "Events": {
         "Event": [
           {
-            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventCode": "P.xyz.STS.SP_ES.100",
             "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
           },
           {
-            "EventCode": "P.NPP.STS.CP_PAE.102",
+            "EventCode": "P.xyz.STS.CP_PAE.102",
             "EventID": "@Ignore@"
           }
         ]
@@ -122,7 +122,7 @@
       ]
     },
     "MUID": "RSBKAUFSXXX20250821001430005009876",
-    "Channel": "NPP",
+    "Channel": "xyz",
     "Direction": "INWARD",
     "RcvdTS": null,
     "DomainName": null,
@@ -135,7 +135,7 @@
       "ClientInfo": null,
       "MsgHdr": {
         "ClientDt": "@Ignore@",
-        "ClientName": "NPP_CORP"
+        "ClientName": "xyz_CORP"
       },
       "PayHdr": {
         "PODSID": "${puId}",
@@ -204,9 +204,9 @@
       "RqUID": null,
       "ClientInfo": null,
       "DestinationName": null,
-      "ClientName": "NPP_CORP",
+      "ClientName": "xyz_CORP",
       "MsgHdr": {
-        "ClientName": "NPP_CORP",
+        "ClientName": "xyz_CORP",
         "Country": "AU"
       },
       "OutcomeQueue": null,
@@ -238,7 +238,7 @@
   "LeanReference": null,
   "Instruction": {
     "MsgDef": {
-      "MsgType": "npp.corp.batch.01",
+      "MsgType": "xyz.corp.batch.01",
       "Scheme": "corp.payroll.01"
     },
     "ClrSys": "INTERNAL"

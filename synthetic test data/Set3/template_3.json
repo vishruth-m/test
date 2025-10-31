@@ -1,27 +1,27 @@
 // template_3.json
 {
   "Header": {
-    "ComponentName": "PSP_NPP",
+    "ComponentName": "PSP_xyz",
     "UUID": "${puId}",
-    "WorkFlow": "NPP003",
-    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "WorkFlow": "xyz003",
+    "ReplyToQueue": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM/RESPONSE",
     "ServiceAction": {
       "ActionCode": "DebitClient_CreditClearing",
       "ActionDesc": "Debit Corporate Client DDA, Credit Internal Clearing GL"
     },
     "EventInfo": {
-      "EventCode": "P.NPP.ADT.CP_PAE.100",
+      "EventCode": "P.xyz.ADT.CP_PAE.100",
       "EventDescription": "Request Sent for accounting:DebitClient_CreditClearing",
       "EventID": "f9e8d7c6-40ab-4cf6-9e0b-e0ec8eeab52",
       "EventType": "PE",
       "EventProducer": "FastInwardOrchestrator",
       "EventTS": "2025-08-21T14:30:00.500",
-      "EventTopics": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM",
+      "EventTopics": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM",
       "SystemId": null,
       "Events": {
         "Event": [
           {
-            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventCode": "P.xyz.STS.SP_ES.100",
             "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
           }
         ]
@@ -77,7 +77,7 @@
       ]
     },
     "MUID": "RSBKAUFSXXX20250821001430005009876",
-    "Channel": "NPP",
+    "Channel": "xyz",
     "Direction": "INWARD",
     "RcvdTS": null,
     "DomainName": null,
@@ -90,7 +90,7 @@
         "ClientInfo": null,
         "MsgHdr": {
           "ClientDt": "${utcDateTime}",
-          "ClientName": "NPP_CORP"
+          "ClientName": "xyz_CORP"
         },
         "Security": null,
         "PayHdr": {
@@ -159,9 +159,9 @@
         "RqUID": null,
         "ClientInfo": null,
         "DestinationName": null,
-        "ClientName": "NPP_CORP",
+        "ClientName": "xyz_CORP",
         "MsgHdr": {
-          "ClientName": "NPP_CORP",
+          "ClientName": "xyz_CORP",
           "Country": "AU"
         },
         "OutcomeQueue": null,
@@ -192,7 +192,7 @@
     "LeanReference": null,
     "Instruction": {
       "MsgDef": {
-        "MsgType": "npp.corp.batch.01",
+        "MsgType": "xyz.corp.batch.01",
         "Scheme": "corp.payroll.01"
       },
       "ClrngSys": "INTERNAL"

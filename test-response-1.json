@@ -7,7 +7,7 @@
       "SeqNum": "@Ignore@",
       "BulkCount": "0",
       "PodId": "${puId}",
-      "Source": "NPP",
+      "Source": "xyz",
       "ProcDate": "${procDate}",
       "Country": "AU",
       "DebitCountry": "AU",
@@ -42,35 +42,35 @@
     }
   },
   "Header": {
-    "ComponentName": "PSP_NPP",
+    "ComponentName": "PSP_xyz",
     "UUID": "${puId}",
-    "WorkFlow": "NPP001",
-    "ReplyToQueue": "P/A/NPP/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/NPP/FAST/INWARD/NORM/RESPONSE",
+    "WorkFlow": "xyz001",
+    "ReplyToQueue": "P/A/xyz/AU/PMT/FIORCH/1/PE/N/ACCOUNTING/xyz/FAST/INWARD/NORM/RESPONSE",
     "ServiceAction": {
       "ActionCode": "DebitClearing_CreditBeneficiary",
       "ActionDesc": null
     },
     "EventInfo": {
-      "EventCode": "P.NPP.STS.CP_PAE.102",
+      "EventCode": "P.xyz.STS.CP_PAE.102",
       "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
       "EventID": "@Ignore@",
       "EventType": "PE",
-      "EventProducer": "NPPInwardAccountingService",
+      "EventProducer": "xyzInwardAccountingService",
       "EventTS": "@Ignore@",
-      "EventTopics": "P/A/NPP/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/NPP/FAST/INWARD/NORM",
+      "EventTopics": "P/A/xyz/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/xyz/FAST/INWARD/NORM",
       "SystemId": null,
       "Events": {
         "Event": [
           {
-            "EventCode": "P.NPP.STS.SP_ES.100",
+            "EventCode": "P.xyz.STS.SP_ES.100",
             "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
           },
           {
-            "EventCode": "P.NPP.STS.PP_EP.300",
+            "EventCode": "P.xyz.STS.PP_EP.300",
             "EventID": "16087bd9-04d4-470d-9f99-bfc7c09cb721"
           },
           {
-            "EventCode": "P.NPP.STS.CP_PAE.102",
+            "EventCode": "P.xyz.STS.CP_PAE.102",
             "EventID": "@Ignore@"
           }
         ]
@@ -146,7 +146,7 @@
       ]
     },
     "MUID": "RSBKAUFSXXX20250819000710101005123",
-    "Channel": "NPP",
+    "Channel": "xyz",
     "Direction": "INWARD",
     "RcvdTS": null,
     "DomainName": null,
@@ -159,7 +159,7 @@
       "ClientInfo": null,
       "MsgHdr": {
         "ClientDt": "@Ignore@",
-        "ClientName": "NPP"
+        "ClientName": "xyz"
       },
       "PayHdr": {
         "PODSID": "${puId}",
@@ -231,9 +231,9 @@
       "RqUID": null,
       "ClientInfo": null,
       "DestinationName": null,
-      "ClientName": "NPP",
+      "ClientName": "xyz",
       "MsgHdr": {
-        "ClientName": "NPP",
+        "ClientName": "xyz",
         "Country": "AU"
       },
       "OutcomeQueue": null,
@@ -270,10 +270,10 @@
   "LeanReference": null,
   "Instruction": {
     "MsgDef": {
-      "MsgType": "npp.clear.01-x2p1.04",
+      "MsgType": "xyz.clear.01-x2p1.04",
       "Scheme": "pacs.002.001.06"
     },
-    "ClrSys": "NPP-AU"
+    "ClrSys": "xyz-AU"
   },
   "Detail": "<BusMsg>\n<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\">\n <Fr>\n <FIId>\n <FinInstnId>\n",
   "Trailer": {
