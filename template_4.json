@@ -1,0 +1,297 @@
+{
+  "Header": {
+    "ComponentName": "PSP_Core",
+    "UUID": "${puId}",
+    "WorkFlow": "PaymentFlow_001",
+    "ReplyToQueue": "P/A/CoreSvc/AU/PMT/Orchestrator/1/PE/N/ACCOUNTING/CoreSvc/FAST/INWARD/NORM/RESPONSE",
+    "ServiceAction": {
+      "ActionCode": "DebitClearing_CreditBeneficiary",
+      "ActionDesc": null
+    },
+    "EventInfo": {
+      "EventCode": "EVT.CoreSvc.Accounting.Request.100",
+      "EventDescription": "Request Sent for accounting:DebitClearing_CreditBeneficiary",
+      "EventID": "e2d18c43-40ab-4cf6-9e0b-e0ec8eeab52",
+      "EventType": "PE",
+      "EventProducer": "InboundPaymentOrchestrator",
+      "EventTS": "2025-08-19T07:10:01.123",
+      "EventTopics": "P/A/CoreSvc/AU/PMT/Orchestrator/1/PE/N/ACCOUNTING/CoreSvc/FAST/INWARD/NORM",
+      "SystemId": null,
+      "Events": {
+        "Event": [
+          {
+            "EventCode": "EVT.CoreSvc.Status.Sent.100",
+            "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
+          },
+          {
+            "EventCode": "EVT.CoreSvc.Status.Processed.300",
+            "EventID": "16087bd9-04d4-470d-9f99-bfc7c09cb721"
+          }
+        ]
+      },
+      "EventVersion": null
+    },
+    "ReqMap": {
+      "Map": [
+        {
+          "MapKey": "ACC_ID",
+          "MapValue": "CREDIT_BRANCH_CODECREDIT_ACCT_ID_456"
+        },
+        {
+          "MapKey": "SN_INTR_BNK_STTLMT_AMT",
+          "MapValue": "150.75"
+        },
+        {
+          "MapKey": "INTER_BNK_SET_DT",
+          "MapValue": "2025-08-19"
+        },
+        {
+          "MapKey": "DBTR_LEGAL_NM",
+          "MapValue": "Debtor Name"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_LEGAL_NAME",
+          "MapValue": "Creditor Name"
+        },
+        {
+          "MapKey": "TO_BIC_BAH",
+          "MapValue": "CREDITRBANKAUXX"
+        },
+        {
+          "MapKey": "PU_ID",
+          "MapValue": "${puId}"
+        },
+        {
+          "MapKey": "MSG_ID",
+          "MapValue": "MSG_ID_123456789"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_ID",
+          "MapValue": "CREDIT_ACCT_ID_456"
+        },
+        {
+          "MapKey": "DBTR_NM",
+          "MapValue": "Debtor Name"
+        },
+        {
+          "MapKey": "INSTG_BIC",
+          "MapValue": "DEBTORBANKAUXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_BSB",
+          "MapValue": "CREDIT_BRANCH_CODE"
+        },
+        {
+          "MapKey": "FRM_BIC_BAH",
+          "MapValue": "DEBTORBANKAUXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_NAME",
+          "MapValue": "Creditor Name"
+        },
+        {
+          "MapKey": "TX_ID",
+          "MapValue": "${txId}"
+        },
+        {
+          "MapKey": "TRACE_ID",
+          "MapValue": "TRACEID_98765"
+        }
+      ]
+    },
+    "MUID": "MSG_ID_123456789",
+    "Channel": "CoreSvc",
+    "Direction": "INWARD",
+    "RcvdTS": null,
+    "DomainName": null,
+    "DomainType": null
+  },
+  "Body": {
+    "PmtAddRq": [
+      {
+        "RqUID": "${txId}",
+        "ClientInfo": null,
+        "MsgHdr": {
+          "ClientDt": "${utcDateTime}",
+          "ClientName": "CoreSvc",
+          "PartyId": null,
+          "Version": null,
+          "OrigMethod": "NORM",
+          "OutcomeQueue": null,
+          "ValidationToken": null,
+          "OrigSource": null,
+          "OrigSender": null,
+          "InstructingCountry": null
+        },
+        "Security": null,
+        "PayHdr": {
+          "PODSID": "${puId}",
+          "RelatedPODSID": null,
+          "PaymentID": null,
+          "ThirdPartyPayID": "Inward_domestic_1",
+          "PaymentBatchID": null,
+          "ItemID": null,
+          "NbrofItems": 1,
+          "ValueofItems": null,
+          "PaymentTRN": "${txId}",
+          "PaymentRelRef": null,
+          "ProcDate": "${procDate}",
+          "AcctTranType": null,
+          "BankOriginated": null,
+          "CustomerContact": null
+        },
+        "FromFIData": {
+          "Country": "AU",
+          "BIC": "DEBTORBANKAUXX",
+          "Name": null,
+          "Branch": "DEBIT_BRANCH_CODE"
+        },
+        "FromCust": {
+          "Name": "Debtor Name",
+          "ResidentStatus": null,
+          "Addr1": null,
+          "Addr2": null,
+          "Addr3": null,
+          "Addr4": "100 Market St, Sydney",
+          "CustClass": "INDV",
+          "Reference": "NOTPROVIDED",
+          "Country": "AU"
+        },
+        "FromAcct": {
+          "AcctId": "DEBIT_ACCT_ID_123",
+          "AcctSys": "LegacyGL",
+          "AcctGrp": null,
+          "Branch": "DEBIT_BRANCH_CODE",
+          "CostCentre": null,
+          "Location": null,
+          "Name": null,
+          "Linkage": null,
+          "PmtAuthMethod": null,
+          "AutoException": null,
+          "Narrative": "${puId}",
+          "CurCode": "AUD",
+          "Amount": "150.75",
+          "AcctUse": "Suspense",
+          "Reference": "NOTPROVIDED"
+        },
+        "Lien": null,
+        "ToFIData": {
+          "Country": "AU",
+          "BIC": "CREDITRBANKAUXX",
+          "Branch": "CREDIT_BRANCH_CODE",
+          "Name": null
+        },
+        "Clearing": {
+          "ClearPref": "FAST",
+          "ClearSubPref": "ICS1",
+          "ChargeBearer": "SLEV"
+        },
+        "ToBene": {
+          "Id": null,
+          "Name": "Creditor Name",
+          "Country": "AU",
+          "Message": "Invoice #456-B",
+          "ContactName": "Creditor Accounts Dept"
+        },
+        "ToAcct": {
+          "AcctId": "CREDIT_ACCT_ID_456",
+          "AcctSys": "CoreBankingSys",
+          "AcctGrp": "AUA",
+          "Branch": "CREDIT_BRANCH_CODE",
+          "Name": "Creditor Name",
+          "CurCode": "AUD",
+          "Alias": "accounts@creditor.com",
+          "AliasType": "/EMAIL",
+          "AliasLegalName": "Creditor Name Ltd",
+          "Amount": "150.75",
+          "Narrative": "PAYMENT FROM Debtor Name"
+        },
+        "FX": null,
+        "Fees": null,
+        "id": null
+      }
+    ],
+    "PmtAddRs": [
+      {
+        "RqUID": null,
+        "ClientInfo": null,
+        "DestinationName": null,
+        "ClientName": "CoreSvc",
+        "MsgHdr": {
+          "ClientName": "CoreSvc",
+          "Country": "AU",
+          "InstructingCountry": null
+        },
+        "OutcomeQueue": null,
+        "PayHdr": {
+          "ClearPref": "FAST",
+          "ClearSubPref": "ICS1"
+        },
+        "Status": {
+          "StatusCode": "0",
+          "StatusDesc": "SUCCESS"
+        },
+        "Message": null,
+        "Returned": {
+          "PODSID": "${puId}",
+          "ClearMethod": "FAST",
+          "ClearSubMethod": "ICS1",
+          "Message": [
+            {
+              "Status": "Final",
+              "Detail": "Accounting"
+            },
+            {
+              "Status": "Validation"
+            }
+          ]
+        },
+        "id": null
+      }
+    ],
+    "ProcCtxt": null,
+    "BatchAddRq": null,
+    "BatchAddRs": null,
+    "LeanReference": null,
+    "Instruction": {
+      "MsgDef": {
+        "MsgType": "CoreSvc.clear.01-x2p1.04",
+        "Scheme": "pacs.002.001.06"
+      },
+      "ClrngSys": "CoreSvc-AU"
+    },
+    "Detail": "<BusMsg>\n<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\">\n <Fr>\n <FIId>\n <FinInstnId>\n",
+    "Trailer": {
+      "ServiceStatus": {
+        "Status": "SUCCESS",
+        "StatusCode": "0",
+        "StatusDesc": "AccountingPassed",
+        "Repairable": null
+      }
+    },
+    "ResMap": {
+      "Map": [
+        {
+          "MapKey": "ORGNL_MSG_ID",
+          "MapValue": "DEBTORBANKAUXX_MSG_ID_ORIG"
+        },
+        {
+          "MapKey": "CN_MSG_ID",
+          "MapValue": "CREDITRBANKAUXX_MSG_ID_CONF"
+        },
+        {
+          "MapKey": "CN_RSNCD",
+          "MapValue": "ACCP"
+        },
+        {
+          "MapKey": "CN_STS",
+          "MapValue": "ACCP"
+        },
+        {
+          "MapKey": "EVENT_CODE",
+          "MapValue": "SETTLEMENT_SUCCESS"
+        }
+      ]
+    }
+  }
+}

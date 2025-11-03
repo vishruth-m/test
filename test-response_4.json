@@ -1,0 +1,310 @@
+{
+  "AccountingEntryMap": {
+    "AccountingEntry": {
+      "ObjId": "@Ignore@",
+      "LegNum": "1",
+      "SeqNum": "@Ignore@",
+      "BulkCount": "0",
+      "PodId": "${puId}",
+      "Source": "CoreSvc",
+      "ProcDate": "${procDate}",
+      "Country": "AU",
+      "DebitCountry": "AU",
+      "DebitCurrency": "AUD",
+      "DebitAccountId": "DEBIT_ACCT_ID_123",
+      "DebitAccountGroup": null,
+      "DebitAccountBSB": "DEBIT_BRANCH_CODE",
+      "DebitCostCentre": "0000",
+      "DebitAccountSys": "LegacyGL",
+      "DebitAmount": "150.75",
+      "DebitNarrative": "${puId}",
+      "DebitASTM": "LegacyGL",
+      "DebitAggregateInd": "Y",
+      "BucketID": null,
+      "CreditCountry": "AU",
+      "CreditCurrency": "AUD",
+      "CreditAccountId": "INTERNAL_CREDIT_ACCT_789",
+      "CreditAccountGroup": null,
+      "CreditAccountBSB": "CREDIT_BRANCH_CODE",
+      "CreditCostCentre": "0000",
+      "CreditAccountSys": "GL",
+      "CreditAmount": "150.75",
+      "CreditNarrative": "${puId}",
+      "CreditASTM": "LegacyGL",
+      "CreditAggregateInd": "Y",
+      "OtherPartyBucketID": null,
+      "DestinationASTM": "GL",
+      "MiscAttribute1": "SUSPENSE",
+      "MiscAttribute2": "SUSPENSE",
+      "MiscAttribute3": null,
+      "MiscAttribute4": null
+    }
+  },
+  "Header": {
+    "ComponentName": "PSP_Core",
+    "UUID": "${puId}",
+    "WorkFlow": "PaymentFlow_001",
+    "ReplyToQueue": "P/A/CoreSvc/AU/PMT/Orchestrator/1/PE/N/ACCOUNTING/CoreSvc/FAST/INWARD/NORM/RESPONSE",
+    "ServiceAction": {
+      "ActionCode": "DebitClearing_CreditBeneficiary",
+      "ActionDesc": null
+    },
+    "EventInfo": {
+      "EventCode": "EVT.CoreSvc.Status.Accounting.102",
+      "EventDescription": "Request sent from Accounting Service to Mediation Service- PSP Mediation/Aggregation",
+      "EventID": "@Ignore@",
+      "EventType": "PE",
+      "EventProducer": "InboundAccountingService",
+      "EventTS": "@Ignore@",
+      "EventTopics": "P/A/CoreSvc/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/CoreSvc/FAST/INWARD/NORM",
+      "SystemId": null,
+      "Events": {
+        "Event": [
+          {
+            "EventCode": "EVT.CoreSvc.Status.Sent.100",
+            "EventID": "2a66be78-3a94-4b53-9161-a4aabc643c28"
+          },
+          {
+            "EventCode": "EVT.CoreSvc.Status.Processed.300",
+            "EventID": "16087bd9-04d4-470d-9f99-bfc7c09cb721"
+          },
+          {
+            "EventCode": "EVT.CoreSvc.Status.Accounting.102",
+            "EventID": "@Ignore@"
+          }
+        ]
+      },
+      "EventVersion": null
+    },
+    "ReqMap": {
+      "Map": [
+        {
+          "MapKey": "ACC_ID",
+          "MapValue": "CREDIT_BRANCH_CODECREDIT_ACCT_ID_456"
+        },
+        {
+          "MapKey": "SN_INTR_BNK_STTLMT_AMT",
+          "MapValue": "150.75"
+        },
+        {
+          "MapKey": "INTER_BNK_SET_DT",
+          "MapValue": "2025-08-19"
+        },
+        {
+          "MapKey": "DBTR_LEGAL_NM",
+          "MapValue": "Debtor Name"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_LEGAL_NAME",
+          "MapValue": "Creditor Name"
+        },
+        {
+          "MapKey": "TO_BIC_BAH",
+          "MapValue": "CREDITRBANKAUXX"
+        },
+        {
+          "MapKey": "PU_ID",
+          "MapValue": "${puId}"
+        },
+        {
+          "MapKey": "MSG_ID",
+          "MapValue": "MSG_ID_123456789"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_ID",
+          "MapValue": "CREDIT_ACCT_ID_456"
+        },
+        {
+          "MapKey": "DBTR_NM",
+          "MapValue": "Debtor Name"
+        },
+        {
+          "MapKey": "INSTG_BIC",
+          "MapValue": "DEBTORBANKAUXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_BSB",
+          "MapValue": "CREDIT_BRANCH_CODE"
+        },
+        {
+          "MapKey": "FRM_BIC_BAH",
+          "MapValue": "DEBTORBANKAUXX"
+        },
+        {
+          "MapKey": "TO_ACCOUNT_NAME",
+          "MapValue": "Creditor Name"
+        },
+        {
+          "MapKey": "TX_ID",
+          "MapValue": "${txId}"
+        },
+        {
+          "MapKey": "TRACE_ID",
+          "MapValue": "TRACEID_98765"
+        }
+      ]
+    },
+    "MUID": "MSG_ID_123456789",
+    "Channel": "CoreSvc",
+    "Direction": "INWARD",
+    "RcvdTS": null,
+    "DomainName": null,
+    "DomainType": null
+  },
+  "Body": {
+    "PmtAddRq": {
+      "{": null,
+      "RqUID": "${txId}",
+      "ClientInfo": null,
+      "MsgHdr": {
+        "ClientDt": "@Ignore@",
+        "ClientName": "CoreSvc"
+      },
+      "PayHdr": {
+        "PODSID": "${puId}",
+        "ThirdPartyPayID": "Inward_domestic_1",
+        "NbrofItems": 1,
+        "PaymentTRN": "${txId}",
+        "ProcDate": "${procDate}"
+      },
+      "FromFIData": {
+        "Country": "AU",
+        "BIC": "DEBTORBANKAUXX",
+        "Branch": "DEBIT_BRANCH_CODE"
+      },
+      "FromCust": {
+        "Name": "Debtor Name",
+        "Addr4": "100 Market St, Sydney",
+        "CustClass": "INDV",
+        "Reference": "NOTPROVIDED",
+        "Country": "AU"
+      },
+      "FromAcct": {
+        "AcctId": "DEBIT_ACCT_ID_123",
+        "AcctSys": "LegacyGL",
+        "Branch": "DEBIT_BRANCH_CODE",
+        "Narrative": "${puId}",
+        "CurCode": "AUD",
+        "Amount": "150.75",
+        "AcctUse": "Suspense",
+        "Reference": "NOTPROVIDED"
+      },
+      "Lien": null,
+      "ToFIData": {
+        "Country": "AU",
+        "BIC": "CREDITRBANKAUXX",
+        "Branch": "CREDIT_BRANCH_CODE"
+      },
+      "Clearing": {
+        "ClearPref": "FAST",
+        "ClearSubPref": "ICS1",
+        "ChargeBearer": "SLEV"
+      },
+      "ToBene": {
+        "Name": "Creditor Name",
+        "Country": "AU",
+        "Message": "Invoice #456-B",
+        "ContactName": "Creditor Accounts Dept"
+      },
+      "ToAcct": {
+        "AcctId": "CREDIT_ACCT_ID_456",
+        "AcctSys": "CoreBankingSys",
+        "AcctGrp": "AUA",
+        "Branch": "CREDIT_BRANCH_CODE",
+        "Name": "Creditor Name",
+        "CurCode": "AUD",
+        "Alias": "accounts@creditor.com",
+        "AliasType": "/EMAIL",
+        "AliasLegalName": "Creditor Name Ltd",
+        "Amount": "150.75",
+        "Narrative": "PAYMENT FROM Debtor Name"
+      },
+      "FX": null,
+      "Fees": null,
+      "ISOInfo": null,
+      "id": null
+    }
+  ],
+  "PmtAddRs": [
+    {
+      "RqUID": null,
+      "ClientInfo": null,
+      "DestinationName": null,
+      "ClientName": "CoreSvc",
+      "MsgHdr": {
+        "ClientName": "CoreSvc",
+        "Country": "AU"
+      },
+      "OutcomeQueue": null,
+      "PayHdr": {
+        "ClearPref": "FAST",
+        "ClearSubPref": "ICS1"
+      },
+      "Status": {
+        "StatusCode": "0",
+        "StatusDesc": "SUCCESS"
+      },
+      "FX": null,
+      "Message": null,
+      "Returned": {
+        "PODSID": "${puId}",
+        "ClearMethod": "FAST",
+        "ClearSubMethod": "ICS1",
+        "Message": [
+          {
+            "Status": "Final",
+            "Detail": "Accounting"
+          },
+          {
+            "Status": "Validation"
+          }
+        ]
+      },
+      "id": null
+    }
+  ],
+  "Procctxt": null,
+  "BatchAddRq": null,
+  "BatchAddRs": null,
+  "LeanReference": null,
+  "Instruction": {
+    "MsgDef": {
+      "MsgType": "CoreSvc.clear.01-x2p1.04",
+      "Scheme": "pacs.002.001.06"
+    },
+    "ClrSys": "CoreSvc-AU"
+  },
+  "Detail": "<BusMsg>\n<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\">\n <Fr>\n <FIId>\n <FinInstnId>\n",
+  "Trailer": {
+    "ServiceStatus": {
+      "Status": "SUCCESS",
+      "StatusCode": "0",
+      "StatusDesc": "AccountingPassed",
+      "Repairable": null
+    }
+  },
+  "ResMap": {
+    "Map": [
+      {
+        "MapKey": "ORGNL_MSG_ID",
+        "MapValue": "DEBTORBANKAUXX_MSG_ID_ORIG"
+      },
+      {
+        "MapKey": "CN_MSG_ID",
+        "MapValue": "CREDITRBANKAUXX_MSG_ID_CONF"
+      },
+      {
+        "MapKey": "CN_RSNCD",
+        "MapValue": "ACCP"
+      },
+      {
+        "MapKey": "CN_STS",
+        "MapValue": "ACCP"
+      },
+      {
+        "MapKey": "EVENT_CODE",
+        "MapValue": "SETTLEMENT_SUCCESS"
+      }
+    ]
+  }
+}

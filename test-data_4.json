@@ -1,0 +1,102 @@
+
+{
+  "testMetadata": {
+    "testName": "Core Accounting Service Domestic Transfer Test",
+    "testDescription": "Verify Core Accounting Service processes a standard domestic transfer",
+    "fromBic": "INSTITUTIONAUXX",
+    "toBic": "CREDITRBANKAUXX"
+  },
+  "messaging": {
+    "inputQueue": {
+      "destination": "CoreSvc.IN_ACCOUNTING.01.AU.IN.01",
+      "isCompressed": false
+    },
+    "reply": {
+      "destination": "P/A/CoreSvc/AU/PMT/ACCOUNTING/1/PE/N/ACCOUNTING-GL/CoreSvc/FAST/INWARD/NORM",
+      "destinationType": "topic",
+      "isCompressed": false,
+      "responseTemplatePath": "generic-accounting-domestic-transfer.json",
+      "correlationIdDisabled": true
+    },
+    "protocol": "Solace"
+  },
+  "testTemplateData": {
+    "templatePath": "generic-accounting-domestic-transfer.json",
+    "templateParameters": {
+      "static": {
+        "actionCode": "DebitClearing_CreditBeneficiary",
+        "fromBic": "INSTITUTIONAUXX",
+        "toBic": "CREDITRBANKAUXX",
+        "fromCountry": "AU",
+        "toCountry": "AU",
+        "fromBranch": "DEBIT_BRANCH_CODE",
+        "toBranch": "CREDIT_BRANCH_CODE",
+        "bizSvc": "CoreSvc.settlement.01-x2p1.04",
+        "currency": "AUD",
+        "amount": "150.75",
+        "beneficiaryCountry": "AU",
+        "beneficiaryBic": "CREDITRBANKAUXX",
+        "beneficiaryBranch": "CREDIT_BRANCH_CODE",
+        "beneficiaryName": "Creditor Name",
+        "beneficiaryAccountId": "CREDIT_BRANCH_CODECREDIT_ACCT_ID_456",
+        "debitCountry": "AU",
+        "debitBic": "INSTITUTIONAUXX",
+        "debitBranch": "DEBIT_BRANCH_CODE",
+        "debitAccountId": "GENERIC_CLEARING_ACCT",
+        "debitAccountGroup": "",
+        "debitAcctSys": "PSP",
+        "debitAcctUse": "Clearing",
+        "debitCostCentre": "DEFAULT",
+        "debitAggregate": "Y",
+        "creditCountry": "AU",
+        "creditBic": "CREDITRBANKAUXX",
+        "creditBranch": "CREDIT_BRANCH_CODE",
+        "creditAccountId": "GENERIC_BENEFICIARY_GL",
+        "creditAccountGroup": "",
+        "creditAcctSys": "PSP",
+        "creditAcctUse": "Beneficiary",
+        "creditCostCentre": "DEFAULT",
+        "creditAggregate": "Y"
+      }
+    }
+  },
+  "databaseVerification": [
+    {
+      "query": "SELECT * FROM ${dbSchema}PAYMENT_ACCOUNTING_LOG WHERE PU_ID = '${puId}' AND LEG_ID = '1' AND ACTION_CODE = 'DebitClearing_CreditBeneficiary'...",
+      "verification": [
+        { "field": "PU_ID", "type": "equals", "value": "${puId}" },
+        { "field": "LEG_ID", "type": "equals", "value": "1" },
+        { "field": "ACTION_CODE", "type": "equals", "value": "DebitClearing_CreditBeneficiary" },
+        { "field": "DEBIT_ACCOUNT_ID", "type": "equals", "value": "GENERIC_CLEARING_ACCT" },
+        { "field": "DEBIT_AMOUNT", "type": "equals", "value": "150.75" },
+        { "field": "DEBIT_CURRENCY", "type": "equals", "value": "AUD" },
+        { "field": "CREDIT_ACCOUNT_ID", "type": "equals", "value": "GENERIC_BENEFICIARY_GL" },
+        { "field": "CREDIT_AMOUNT", "type": "equals", "value": "150.75" },
+        { "field": "CREDIT_CURRENCY", "type": "equals", "value": "AUD" },
+        { "field": "TX_ID", "type": "equals", "value": "${txId}" }
+      ]
+    }
+  ],
+  "mongoVerification": [
+    {
+      "collection": "payment_audit_logs",
+      "description": "Verify MongoDB audit trail for Domestic Transfer",
+      "filter": {
+        "puId": "${puId}",
+        "remark": "Payment posted to Mediation"
+      },
+      "verification": [
+        { "field": "reqId", "type": "equals", "value": "${txId}" },
+        { "field": "remark", "type": "equals", "value": "Payment posted to Mediation" },
+        { "field": "source", "type": "equals", "value": "AccountingService" },
+        { "field": "destination", "type": "equals", "value": "MediationService" },
+        { "field": "eventcode", "type": "equals", "value": "AUDIT_EVT_900" },
+        { "field": "puId", "type": "equals", "value": "${puId}" }
+      ],
+      "expectedCount": {
+        "type": "equals",
+        "value": 1
+      }
+    }
+  ]
+}
